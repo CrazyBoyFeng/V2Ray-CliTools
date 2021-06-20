@@ -55,20 +55,6 @@
     "rules": [
       {
         "type": "field",
-        "outboundTag": "proxy",
-        "domain": [
-          "geosite:geolocation-!cn"
-        ]
-      },
-      {
-        "type": "field",
-        "outboundTag": "proxy",
-        "ip": [
-          "geoip:!cn"
-        ]
-      },
-      {
-        "type": "field",
         "outboundTag": "direct",
         "domain": [
           "geosite:cn",
@@ -88,6 +74,20 @@
         "outboundTag": "reject",
         "domain": [
           "geosite:category-ads-all"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "proxy",
+        "domain": [
+          "geosite:geolocation-!cn"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "proxy",
+        "ip": [
+          "geoip:!cn"
         ]
       }
     ]
