@@ -29,14 +29,13 @@
         ]
       },
       "streamSettings": {
-        "network": "ws",
+        "network": "gun",
         "security": "tls",
         "tlsSettings": {
           "serverName": "//domain name"
         },
-
-        "wsSettings": {
-          "path": "/path/to.websocket"
+        "grpcSettings": {
+          "path": "gRPC/service.name"
         }
       }
     },
