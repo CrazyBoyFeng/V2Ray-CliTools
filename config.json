@@ -4,7 +4,7 @@
   },
   "inbounds": [
     {
-      "listen": "0.0.0.0",
+      "listen": "127.0.0.1",
       "port": 1080,
       "protocol": "http"
     }
@@ -16,7 +16,7 @@
       "settings": {
         "vnext": [
           {
-            "address": "//domain name or ip",
+            "address": "//domain name",
             "port": 443,
             "users": [
               {
@@ -29,14 +29,14 @@
         ]
       },
       "streamSettings": {
-        "network": "gun",
+        "network": "ws",
         "security": "tls",
-        "tlsSettings": {
-          "serverName": "//domain name"
-        },
-        "grpcSettings": {
-          "path": "gRPC/service.name"
+        "wsSettings": {
+          "path": "path/to/your.ws"
         }
+      },
+      "mux": {
+        "enabled": true
       }
     },
     {
