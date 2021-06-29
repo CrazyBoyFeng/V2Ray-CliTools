@@ -17,11 +17,12 @@ If /I "%1"=="Start" (
     GoTo :EOF
 )
 
+Set localhost=127.0.0.1
 Set localport=1080
-Set direct=*.baidu.com;*.qq.com
+Set direct=*.qq.com;*.baidu.com
 
 Call :EnableProxy
-Echo ∆Ù∂Ø %~n0
+Echo ÂêØÂä® %~n0‚Ä¶
 v2ray.exe -c config.json
 Set ExitCode=%ErrorLevel%
 Call :DisableProxy
@@ -32,21 +33,21 @@ Pause
 Exit %ExitCode%
 
 :EnableProxy
-Echo …Ë÷√¥˙¿Ì
-REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyOverride /t REG_SZ /d "%direct%;<local>" /f >NUL
-REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyServer /d "localhost:%localport%" /f >NUL
-REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyEnable /t REG_DWORD /d 1 /f >NUL
-REG DELETE "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v AutoConfigURL /f >NUL 2>NUL
+Echo ËÆæÁΩÆ‰ª£ÁêÜ‚Ä¶
+Reg Add "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyOverride /t REG_SZ /d "%direct%;<local>" /f >NUL
+Reg Add "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyServer /d "%localhost%:%localport%" /f >NUL
+Reg Add "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyEnable /t REG_DWORD /d 1 /f >NUL
+Reg DELETE "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v AutoConfigURL /f >NUL 2>NUL
 Goto :EOF
 
 :DisableProxy
-Echo »°œ˚¥˙¿Ì
-REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyEnable /t REG_DWORD /d 0 /f >NUL
-Rem REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyServer /d "" /f >NUL
-Rem REG ADD "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyOverride /t REG_SZ /d "" /f >NUL
+Echo ÂèñÊ∂à‰ª£ÁêÜ‚Ä¶
+Reg Add "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyEnable /t REG_DWORD /d 0 /f >NUL
+Rem Reg Add "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyServer /d "" /f >NUL
+Rem Reg Add "HKCU\Software\Microsoft\Windows\CurrentVersion\Internet Settings" /v ProxyOverride /t REG_SZ /d "" /f >NUL
 Goto :EOF
 
 :Install
-Echo ø™ª˙∆Ù∂Ø
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v %~n0 /t REG_SZ /d "\"%~dpnx0\" Start" /f >NUL
+Echo ËÆæÁΩÆÂºÄÊú∫ÂêØÂä®‚Ä¶
+Reg Add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v %~n0 /t REG_SZ /d "\"%~dpnx0\" Start" /f >NUL
 Goto :EOF
