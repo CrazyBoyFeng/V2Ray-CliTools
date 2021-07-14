@@ -54,25 +54,26 @@
     "rules": [
       {
         "type": "field",
+        "outboundTag": "reject",
+        "domain": [
+          "geosite:category-ads-all"
+        ]
+      },
+      {
+        "type": "field",
         "outboundTag": "direct",
         "domain": [
+          "geosite:private",
           "geosite:cn",
-          "geosite:private"
+          "geosite:geolocation-!cn@cn"
         ]
       },
       {
         "type": "field",
         "outboundTag": "direct",
         "ip": [
-          "geoip:cn",
-          "geoip:private"
-        ]
-      },
-      {
-        "type": "field",
-        "outboundTag": "reject",
-        "domain": [
-          "geosite:category-ads-all"
+          "geoip:private",
+          "geoip:cn"
         ]
       },
       {
